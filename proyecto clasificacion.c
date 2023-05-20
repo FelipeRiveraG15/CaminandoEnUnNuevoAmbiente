@@ -1,8 +1,18 @@
+//gelenlopez y  felipe rivera   
+//clsificador de basura
 #include<stdio.h>
+#include <string.h>
+
+#define CANT 11
 
 main(){
-    int opc,basura,cantidad;
+    int opc,basura,cantidad,i;
     int RA=0,ROA=0,RNA=0;
+    int vec[11];
+    int vec2[] = {0,0,0,0,0,0,0,0,0,0,0};
+    char *lista[CANT] = {"Plastico","Carton","Vidrio","Papel","Metal","Restos de comida","Desechos agricolas","Papel higienico","Servilletas","Papeles metalizados","Residuios hospitalarios"};
+
+
 
     printf("                   BIENVENIDO AL CLASIFICASDOR DE BASURAS\n");
 
@@ -14,38 +24,24 @@ main(){
          switch(opc){
 
              case 1:
-                 printf("\n\nIngrese el material de la basura:\n\n");
-                 printf("1) Plastico\n2) Carton\n3) Vidrio\n4) Papel\n5) Metal\n6) Restos de comida\n7) Desechos agricolas\n8) Papel higienico\n9) Servilletas\n10) Papeles metalizados\n11) Residuos hospitalarios\n=");
-                 scanf("%d",&basura);
-                 printf("\ncantidad:");
-                 scanf("%d",&cantidad);
 
-                 if(basura>=1 && basura<=5){RA=RA + cantidad;
+                 printf("\n\nIngrese la cantidad en cada material de basura\n\n");
 
-                    printf("\nRegistro exitoso\n");
+                 for( i=0; i<11; i++ ){
+                    printf( "\n%s = ", lista[i] );
+                    scanf("%d",&vec[i]);
+                    vec2[i] = vec[i]+vec2[i];
                  }
-
-                 else if(basura>=6 && basura<=7){
-
-                    ROA=ROA +cantidad;
-
-                    printf("\nRegistro exitoso\n\n");
-                 }
-
-                 else if(basura>=8 && basura<=11){
-
-                    RNA=RNA +cantidad;
-
-                    printf("\nRegistro exitoso\n\n");
-
-                 }
-
-                 else {printf("\nOpcion incorrecta porfavor ingrese otra opcion valida\n\n");}
                  break;
 
 
              case 2:
-              printf("\nEn este momento el contenedor tiene la siguientes cantidades:\n\n");
+
+                 RA=vec2[0]+vec2[1]+vec2[2]+vec2[3]+vec2[4];
+                 ROA=vec2[5]+vec2[6];
+                 RNA=vec2[7]+vec2[8]+vec2[9]+vec2[10];
+
+                 printf("\nEn este momento el contenedor tiene la siguientes cantidades:\n\n");
                  printf("residuos aprovechables = %d\n", RA);
                  printf("residuos organicos aprovechables = %d\n", ROA);
                  printf("residuos no aprovechables = %d\n\n", RNA);
@@ -64,6 +60,4 @@ main(){
 
     while(opc!=3);
 
-}
-
-\\Gelen Lopez Ruiz y Felipe Rivera Granoble
+    }
